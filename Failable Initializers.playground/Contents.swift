@@ -11,21 +11,22 @@ let brokenDictionary = ["nameKey" : "Steve", "ageKey": 2]
 
 class Person {
     
-    let name: String
-    let age: Int
-    let favMovie: String
+    private let nameKey = "nameKey"
+    private let ageKey = "ageKey"
+    private let favMovieKey = "favMovieKey"
+    
+    var name: String?
+    var age: Int?
+    var favMovie: String?
     
     init?(dictionary : [String:AnyObject]) {
         
-        guard let name = dictionary["nameKey"] as? String,
-        age = dictionary["ageKey"] as? Int,
-            favMovie = dictionary["favMovieKey"] as? String else {
-                self.name = ""
-                self.age = 0
-                self.favMovie = ""
+        guard let name = dictionary[nameKey] as? String,
+            age = dictionary[ageKey] as? Int,
+            favMovie = dictionary[favMovieKey] as? String else {
+
                 return nil
         }
-        
         self.name = name
         self.age = age
         self.favMovie = favMovie
@@ -34,5 +35,5 @@ class Person {
 
 let derek = Person(dictionary: workingDictionary)
 derek?.name
-let steven = Person(dictionary: brokenDictionary)
-steven?.name
+let steve = Person(dictionary: brokenDictionary)
+steve?.name
